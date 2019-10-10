@@ -1,0 +1,30 @@
+.nav {
+    box-sizing: border-box;
+    padding: 0 1em 0 1.5em;
+
+    & * {
+        box-sizing: border-box;
+    }
+
+    ul {
+        list-style-position: inside;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        li {
+            margin: 0;
+        }
+        
+        li.navItemGroup {
+            list-style: none;
+            padding-left: 0;
+        }
+    }
+    &> ul {
+        padding: 1em 0;
+    }
+    .navHeading {
+        margin: 1em 0;
+    }
+}

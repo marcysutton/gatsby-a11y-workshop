@@ -1,0 +1,213 @@
+* {
+  box-sizing: inherit;
+}
+*:before {
+  box-sizing: inherit;
+}
+*:after {
+  box-sizing: inherit;
+}
+html {
+  font-size: 18px;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+a, a:link, a:visited {
+  color: #333;
+}
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+.js-focus-visible :focus-visible {
+  outline: 5px auto lightblue;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+p > code {
+  background-color: #f6f7b4;
+  font-weight: bold;
+  padding: 1px 3px;
+}
+.js-workshop-app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: "header header"
+                        "nav  main";
+  height: 100vh;
+  width: 100vw;
+
+  main {
+    background-color: #fff;
+    grid-area: main;
+  }
+  nav {
+    background-color: #ececec;
+    grid-area: nav;
+  }
+  header.globalHeader {
+    grid-area: header;
+  }
+  p, ul {
+    margin-bottom: 1em;
+    line-height: 1.5;
+  }
+}
+@media screen and (max-width: 600px) {
+  .js-workshop-app {
+    display: block;
+  }
+}
+header.globalHeader {
+  background-color: rebeccapurple;
+  color: white;
+  padding: 1em;
+
+  .headerIcon {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+  }
+  a, a:link, a:visited {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  svg path {
+    fill: currentColor;
+  }
+}
+main.app > div {
+  padding: 1.5em;
+}
+.heading {
+  font-weight: bold;
+
+  &.level-3 {
+    font-size: 1.35rem;
+    margin-bottom: 1em;
+  }
+}
+section.two-col {
+  display: grid;
+  grid-template-columns: 1fr  1fr;
+}
+.demo-button {
+  background-color: #333;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  display: inline-block;
+  font-size: 2rem;
+  margin: 0rem 0 1.5rem;
+  padding: 0.25rem 0.5rem;
+
+  &.no-focus {
+    outline: none;
+  }
+}
+.modal-curtain {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+[hidden] {
+  display: none;
+}
+.semantic-layout {
+  margin-bottom: 2em;
+
+  & [data-el],
+  &[data-el] {
+    border: 1px solid rebeccapurple;
+    padding: 0.5em;
+    position: relative;
+
+    &:before {
+      background-color: rebeccapurple;
+      color: #fff;
+      content: attr(data-el);
+      font-weight: bold;
+      display: block;
+      right: 0;
+      line-height: 0.45;
+      padding: 0.45em;
+      position: absolute;
+      top: 0;
+    }
+  }
+  & > div[data-el],
+  &[data-el] {
+    padding: 1.5em;
+  }
+}
+.grid-wrap-2 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+textarea {
+  height: 200px;
+  width: 320px;
+}
+.updateUI {
+  max-width: 320px;
+
+  .toast {
+    background-color: lightyellow;
+    display: flex;
+    opacity: 0;
+    padding: 0.5em;
+    pointer-events: none;
+
+    &.updating {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .dismiss {
+      background-color: transparent;
+      border: none;
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-left: auto;
+    }
+  }
+}
+.skip-link {
+  left: 0;
+  position: absolute;
+  top: 0;
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    opacity: 0;
+
+    &:focus {
+      background-color: black;
+      opacity: 1;
+    }
+  }
+}
+.visually-hidden { /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}

@@ -1,0 +1,1670 @@
+import highlight from '@mdx-deck/themes/syntax-highlighter-prism'
+
+import Slide from "../templates/slide"
+import ImageSlide from "../templates/image-slide"
+import CodeBlock from "../components/site-chrome/code-figure"
+import AccessibleAnimationDemo from "../components/better/animation"
+import Autocomplete from "../components/better/downshift-autocomplete"
+
+import baseTheme from '../theme'
+export const themes = [baseTheme, highlight]
+const openModal = () => {
+    document.querySelector('.modal-curtain').removeAttribute('hidden')
+}
+const buttonAction = () => {
+    alert('Button clicked')
+}
+
+<Slide>
+
+# Building Accessible<br />Sites with Gatsby
+
+</Slide>
+
+---
+
+<Slide>
+
+<div style="margin-top: -3em">
+    <h1>Who is Marcy Sutton?</h1>
+</div>
+
+<div style="position: relative; margin:0 auto; max-width: 300px;">
+    <img src="../gatsby-icon.png" alt="Gatsby" style="position:absolute; left: -200px; max-height: 130px; top:30px;" />
+    <img src="../marcysutton-sketch.png" alt="Sketch note portrait of Marcy by Maggie Appleton" style="max-height: 400px; margin-bottom: 200px;" />
+    <img src="../a11y-octopus.png" alt="A11y Octopus" style="position:absolute; right: -240px; top: 30px; max-height: 180px;" />
+    <img src="../axe-logo.png" alt="axe"  style="position:absolute; top: 280px; left: -20px; max-height: 130px;" />
+    <img src="../angular-logo.png" alt="Angular" style="position:absolute; top: 280px; left: 70%; max-height: 125px;" />
+</div>
+<p style="margin: 0;">
+    <a href="https://twitter.com/marcysutton">@marcysutton</a>&nbsp;~&nbsp;<a href="https://marcysutton.com">marcysutton.com</a>
+</p>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Accessibility
+
+Making the web more inclusive <br />
+**_with_** _and_ **_for_ people with disabilities**
+
+http://bit.ly/microsoft-inclusive-toolkit
+
+</Slide>
+
+---
+
+<Slide>
+
+# JavaScript Applications
+
+- Client-rendered: no traditional page reloads
+- Built with frameworks—React, Vue, Ember, Angular, etc.
+- Sometimes server-rendered with “hydration”
+- Challenges and opportunities
+
+</Slide>
+
+---
+
+<Slide>
+
+# What we’ll cover
+
+<div style="font-size: 2.2rem;">
+
+- Accessibility debugging
+- Accessibility in JavaScript apps
+    - Focus management
+    - Client-side routing
+    - Announcements
+    - Semantic HTML
+    - Unobtrusive motion
+    - Progressive enhancement
+- Accessibility units
+- Accessible pages
+- Q & A
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+<div style="margin-top: -4em">
+
+# An app for today
+
+</div>
+
+- Built with Gatsby and React
+- Server and client-rendered
+- Outputs HTML pages by default
+- Includes this slide deck
+
+<div style="display: inline-block;
+    max-width: 45%;
+    margin: 0.5em auto 0px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 25%;">
+
+<img src="../gatsby-icon.png" alt="Gatsby" style="max-width: 47%;margin-right: 0.25em;" />
+<img src="../react-logo.png" alt="React" style="max-width: 47%;" />
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+<div style="margin-top: -2em">
+
+# Install time
+
+</div>
+
+https://github.com/marcysutton/gatsby-a11y-workshop
+
+<CodeBlock>
+
+```shell
+git clone https://github.com/marcysutton/gatsby-a11y-workshop.git
+cd gatsby-a11y-workshop
+npm install
+npm run develop
+```
+
+</CodeBlock>
+
+View the site locally: http://localhost:8000
+
+Online: https://marcysutton.github.io/gatsby-a11y-workshop
+
+</Slide>
+
+---
+
+<Slide>
+
+# Get some tools
+
+⚒
+
+- [NVDA](https://nvaccess.org/download) (Windows)
+- [axe extensions](https://deque.com/axe)
+- [Accessibility Insights](https://accessibilityinsights.io)
+- [more](http://marcysutton.github.io/gatsby-a11y-workshop#Testing-Tools)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Prototyping with [Parcel](https://parceljs.org/)
+Modern development with any JavaScript framework/library
+
+<CodeBlock>
+
+```shell
+git clone https://github.com/marcysutton/parcel-prototype-scaffold parcel-demo
+cd parcel-demo
+
+npm install
+npm start
+```
+
+</CodeBlock>
+
+Alternatively: Codepen, Codesandbox, etc.
+
+</Slide>
+
+---
+
+<Slide>
+
+# Which.js?
+
+- React
+- Ember
+- Angular
+- Polymer
+- Vue
+- Svelte
+- Vanilla
+
+</Slide>
+
+---
+
+<Slide>
+
+# It doesn’t matter.
+## People just want to use your site
+
+![Elmo](../elmo-shrug.gif)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Responsive design<br />is good for accessibility
+
+<img alt="zoomed-in view of a desktop prototype" src="../magnification-a11y.png" style="margin-top: 1em; max-height: 500px;" />
+
+</Slide>
+
+---
+
+<Slide>
+
+# #A11y debugging
+
+- Render in a web browser
+- Test controls with the keyboard
+- Use accessibility web extensions
+- Check color contrast
+- Test with screen readers
+- Use magnification & zoom
+
+</Slide>
+
+---
+
+<Slide width="full">
+
+# Apps to test in the wild
+
+<div style="float: right; font-size: 6rem; margin: 2rem 2rem 0 0;">
+    <span aria-label="magnifying glass" role="img">🔍</span>
+</div>
+
+- [Slack JSON file viewer](https://gatsbyjs.slack.com/files/U964CL6GZ/FKPT589U4/feedback-with-comments.json?origin_team=T6VN36NMP)
+- [GitHub](https://github.com)
+- [Google Maps](https://www.google.com/maps)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Debugging in this Gatsby app
+Fire up a build in a browser and start testing
+
+<CodeBlock side="left">
+
+```shell
+$ npm run build
+$ npm run serve
+```
+
+</CodeBlock>
+
+<p style="margin-top:2rem;"><small>http://localhost:9000</small></p>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Hidden vs. Visible CSS
+
+<div>
+    <button class="demo-button">Demo button</button>
+</div>
+
+<CodeBlock side="left">
+
+```css
+.visually-hidden { 
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+```
+
+</CodeBlock>
+
+<CodeBlock side="right">
+
+```css
+.opacity {
+	opacity: 0;
+}
+.displayNone {
+	display: none;
+}
+.visibility {
+	visibility: hidden;
+}
+```
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# The accessibility tree
+
+## A parallel structure to the DOM
+
+Uses platform Accessibility APIs to communicate page<br /> structure & content to assistive technologies
+
+![Chrome accessibility tree dump](../chrome-accessibility-tree.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Visualize with browser DevTools
+
+Semantic markup and CSS styles impact the accessibility tree
+
+![Chrome DevTools accessibility inspector](../chrome-a11y-inspector.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Focus testing haxx
+
+## Paste into browser devTools console
+
+<CodeBlock>
+
+```js
+document.body.addEventListener('focusin', (event) => {
+    console.log(document.activeElement)
+})
+```
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Safari, y u no focus?
+
+<p><img src="../safari-settings.png" alt="Safari Preferences" style="max-width: 70%;" /></p>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise 1
+## Test pages with the keyboard
+
+![a wooden doll thing repeatedly hitting a keyboard](../keyboard.gif)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise 2
+## Run a browser extension
+
+- [axe](https://deque.com/axe)
+- [Accessibility Insights](https://accessibilityinsights.io)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+- [WAVE](https://wave.webaim.org/extension/)
+- [NoCoffee](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise 3
+## Test with accessibility devTools
+
+- [Chrome color picker & accessibility pane](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
+- [Firefox accessibility tools](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector#Accessing_the_Accessibility_Inspector)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Testing with Screen Readers
+
+Cheat sheets for getting started
+- https://webaim.org/articles/voiceover/
+- https://webaim.org/articles/nvda/
+- https://webaim.org/articles/jaws/
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise 4
+## Screen reader testing
+
+- OSX Voiceover and Safari
+- NVDA and Firefox Windows
+- JAWS and IE11 or Edge
+- iOS Voiceover and Safari
+- Android Accessibility and Chrome
+- Orca on Linux
+
+</Slide>
+
+---
+
+<Slide>
+
+# Magnification
+## For users with low vision
+
+- Browser zoom (all the way: 500%!)
+- OS-level zoom
+- ZoomText & other assistive tech
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise 5
+## Test with magnification
+
+Things to watch out for:
+
+- Page scrolling
+- Font sizes & scaling
+- UX of interactions when zoomed
+
+</Slide>
+
+---
+
+<Slide>
+
+# Intro to Accessibility<br />in JavaScript Applications
+
+<div style="width: 55%; margin: 1em auto">
+
+- Focus management
+- Live Region announcements
+- Semantic HTML
+- Unobtrusive motion
+- Progressive enhancement
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Focus management
+
+_Moving the user’s focus as part of an interaction <br /> to alert them to new content_
+
+_Also: handling focus in disabled and mutated parts of the page_
+
+</Slide>
+
+---
+
+<Slide>
+
+# Focus management<br />building blocks
+
+- Reachable and operable elements
+- TAB, escape, and arrow keys
+- Visible focus styles
+- Hidden/inert content
+
+</Slide>
+
+---
+
+<Slide>
+
+# tabindex in HTML
+
+Make non-interactive elements focusable
+
+<div class="demo-button">
+    Demo DIV
+</div>
+
+<CodeBlock>
+
+```javascript
+tabIndex="0"        // in the tab order. see following slides
+tabIndex="-1"       // focusable by script, or removes from tab order
+tabIndex="99641"    // all up in your tab order. hard to manage
+```
+
+</CodeBlock>
+
+<div style="margin-top:3rem;">
+<span role="img" title="light bulb">💡</span> <em>Screen readers go beyond the TAB key</em>
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# tabindex + role + name
+
+Expose accessibility information for focusable elements.
+
+<div>
+    <div class="demo-button" tabindex="0">
+        Demo DIV
+    </div>
+</div>
+
+<CodeBlock side="left" marginClass="noRightMargin">
+
+```html
+<div tabIndex="0"
+     role="button"
+     aria-label="Close">   
+</div>
+```
+
+</CodeBlock>
+
+<CodeBlock side="right">
+
+```js
+
+// focusable
+// a button widget, not a DIV
+// an accessible name
+ 
+```
+
+</CodeBlock>
+
+<div style="margin-top:3rem;">
+
+<span role="img" title="light bulb">💡</span> <em>Intended for custom interactive elements, not wrapper DIVs</em>
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# tabindex + role + name + events
+
+Make custom controls fully interactive
+
+<div>
+    <div class="demo-button" tabindex="0" aria-label="Close" role="button">
+        DIV button
+    </div>
+</div>
+
+<CodeBlock side="left">
+
+```jsx
+<div tabIndex="0"
+     role="button"
+     aria-label="Close"
+     onClick={clickHandler}
+     onKeyDown={keydownHandler}>   
+</div>
+```
+
+</CodeBlock>
+
+
+<CodeBlock side="right">
+
+```jsx
+// or just use a button :)
+<button aria-label="Close"
+        onClick={clickHandler}>   
+</button>
+```
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# ARIA: Accessible<br />Rich Internet Applications
+
+https://www.w3.org/TR/wai-aria-1.1/
+
+- **role**: what is it?
+- **state**: what's happening to it?
+- **property**: what's the nature of it?
+
+The first [rule of ARIA](https://www.w3.org/TR/using-aria/) is _don’t use it_
+
+</Slide>
+
+---
+
+<Slide>
+
+# Modal layers: <br />disabling background content
+
+<div>
+    <button class="demo-button" onClick={openModal}>Open curtain</button>
+    <div style="display: inline-block; margin-left: 1em;">
+        <a href="#">Demo link</a>
+    </div>
+</div>
+
+- `aria-hidden="true"` and `tabindex="-1"`
+- `inert` (+ [polyfill](https://github.com/WICG/inert))
+- CSS `display: none`
+
+<div class="modal-curtain" hidden></div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Focus management<br />patterns
+
+- Dropdowns and menus
+- Layers and modals
+- View changes and deletes
+- Loading screens
+
+</Slide>
+
+---
+
+<Slide>
+
+# Widget interactions:<br />arrow keys or nah?
+
+It depends on the role and pattern <span role="img" title="sparkle">✨</span>
+
+http://w3c.github.io/aria-practices/
+
+</Slide>
+
+---
+
+<Slide>
+
+# Navigation vs. Actions
+## a.k.a. Links vs. Buttons
+
+<div>
+<a href="#">Link</a> <button class="demo-button" onClick={buttonAction}>Button</button>
+</div>
+
+<CodeBlock side="left">
+
+```html
+<a href="/page">Page</a>
+```
+
+</CodeBlock>
+
+<CodeBlock side="right">
+
+```jsx
+<button onClick={action}>Thing</button>
+```
+
+</CodeBlock>
+
+https://marcysutton.com/links-vs-buttons-in-modern-web-applications
+
+</Slide>
+
+---
+
+<Slide>
+
+# Visible focus styles
+Useful for so many people and situations, but often turned off for everyone
+
+<div>
+<button class="demo-button no-focus">Demo button</button>
+</div>
+
+<CodeBlock side="left" title="🚫 don’t">
+
+```css
+*:focus {
+    outline: none;
+}
+```
+</CodeBlock>
+
+<CodeBlock side="right" title="✅ do">
+
+```css
+:hover, :focus {
+   /* interaction styles here  */
+   outline: 5px auto blue;
+}
+```
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+<div style="margin-top: -2em">
+
+# Styling input modalities
+
+</div>
+
+<div>
+<button class="demo-button">Demo button</button>
+</div>
+
+<CodeBlock side="left" title=":focus-visible + polyfill" url="https://github.com/WICG/focus-visible">
+
+```css
+:focus:not(.focus-visible) {
+	outline: 0;
+ }
+ :focus-visible {
+	outline: 3px solid blue;
+ }
+```
+</CodeBlock>
+
+<CodeBlock side="right" title="What Input.js" url="https://github.com/ten1seven/what-input">
+
+```js
+// in a layout or component
+import 'what-input'
+```
+
+```css
+/* in your CSS */
+[data-whatintent='mouse'] *:focus {
+  outline: none;
+}
+```
+</CodeBlock>
+
+_An OS-level preference would be ideal_ 👍
+
+</Slide>
+
+---
+
+<Slide>
+
+<div style="margin-top: -3em">
+
+# CSS-in-JS
+</div>
+
+Cached class names aren't user friendly, e.g. `class="sc-bdVaJa"`
+
+<CodeBlock side="center" title="Styled Components" url="https://codepen.io/marcysutton/pen/MRxxyM?editors=1010">
+
+```jsx
+import React from 'react'
+import { styled } from 'styled-components'
+const MegaHeader = styled.header`
+    background-color: rebeccapurple;
+`
+const Layout = () => (
+    // add a stable CSS class
+    <MegaHeader className={`site-wrap`}>
+        <h1>My Gatsby Site</h1>
+    </MegaHeader>
+)
+```
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Dropdown Demo
+
+http://localhost:8000/dropdown
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise
+## Create an accessible dropdown
+
+- React component shell: [dropdown.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/dropdown.js)
+- vanilla.js shell: https://codepen.io/marcysutton/pen/aeJdNq
+
+</Slide>
+
+---
+
+<Slide>
+
+# Dropdown answers
+
+- React: [dropdown component](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/dropdown/)
+- vanilla.js: https://codepen.io/marcysutton/pen/JgjYVv
+
+</Slide>
+
+---
+
+<Slide>
+
+<div style="margin-top: -2em">
+
+# Client-side routing
+
+Navigation where JavaScript controls browser history<br />and dynamically maps URLs to each page or view
+
+![Animation of Grommet sorting letters](../mail.gif)
+
+[User testing research on the Gatsby blog](https://www.gatsbyjs.org/blog/2019-07-11-user-testing-accessible-client-routing/)
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Routing approach
+
+- A small UI control in each view target, like a skip link
+- Label with nearby content and its action,<br />e.g. "Portfolio, skip to navigation"
+- When a user clicks a nav link, move focus to this control
+
+![focus diagram](../focus-diagram.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Focus management<br />patterns: underlying tech
+
+- Access DOM nodes with [React refs](https://reactjs.org/docs/refs-and-the-dom.html)
+- New: [React FocusScopes](https://twitter.com/devongovett/status/1100829054800846848)
+- [Vue.js $refs](https://vuejs.org/v2/api/#vm-refs)
+- [Ember suggestions](https://twitter.com/marcysutton/status/1154942698408648704)
+- Other framework APIs?
+- Custom focus manager APIs
+
+</Slide>
+
+---
+
+<Slide>
+
+# Client-side routing demo
+
+http://localhost:8000
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise
+## Focus on client-side route change
+
+- Gatsby [`onRouteUpdate` method](https://www.gatsbyjs.org/docs/browser-apis/#onRouteUpdate) and skip link focus
+- vanilla.js shell: https://codepen.io/marcysutton/pen/wVJeJQ
+
+</Slide>
+
+---
+
+<Slide>
+
+# Client-side routing answers
+
+- Gatsby component: [examples/client-side-routing](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/examples/client-side-routing)
+- vanilla.js: https://codepen.io/marcysutton/pen/MNpmMd
+
+</Slide>
+
+---
+
+<Slide>
+
+# Announcements using<br />ARIA Live Regions
+
+![BBC GIF with a young girl with a megaphone saying attention please](../announcement.webp)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Announcement patterns
+Notify assistive tech users without moving focus
+
+- Asynchronous save / update / etc.
+- Combobox usage / list filtering
+- Chat widgets
+- Title changes*
+
+</Slide>
+
+---
+
+<Slide>
+
+# ARIA Live Regions
+Message command centers of varying importance
+
+https://www.w3.org/TR/wai-aria/#live_region_roles
+
+<CodeBlock side="left">
+
+```html
+<div role="status"></div>
+<div role="alert"></div>
+```
+
+</CodeBlock>
+
+<CodeBlock side="right">
+
+```html
+<div aria-live="polite"></div>
+<div aria-live="assertive"></div>
+```
+
+</CodeBlock>
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# Live Region Example
+
+<div class="demo">
+    <Autocomplete />
+</div>
+
+<div style="margin-top:2em;">
+    <a href="https://github.com/downshift-js/downshift">Downshift.js</a>
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Live Region Gotchas & Tips
+
+- Include [multiple regions](https://github.com/dequelabs/ngA11y) for stubborn situations
+- Politeness levels depend on the use case
+- Site-level announcement manager APIs <span role="img" aria-label="thumbs up">👍</span>
+
+https://github.com/AlmeroSteyn/react-aria-live
+
+</Slide>
+
+---
+
+<Slide>
+
+# Live region demo
+
+http://localhost:8000/announcer
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise
+## Build a live region
+
+- React.js shell: [live-region](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/src/components/better/live-region.js)
+- vanilla.js shell: https://codepen.io/marcysutton/pen/xvqdzx
+
+</Slide>
+
+---
+
+<Slide>
+
+# Live region answers
+
+- React component: [examples/live-region](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/examples/live-region)
+- vanilla.js: https://codepen.io/marcysutton/pen/ZgeKaV
+
+</Slide>
+
+---
+
+<Slide>
+
+# Semantic HTML ✨
+
+- Use headings & landmarks
+- Start wih native UI controls
+- Build semantics into templates
+- Verify assistive tech output
+
+[WebAIM: Semantic Structure](https://webaim.org/techniques/semanticstructure/)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Why semantics are important
+
+> _Headings save time, and programattic information is useful_
+
+<p style="max-width: 80%; margin: 0 auto;">
+Semantic HTML communicates what's on a page to users of assistive technology, reader modes, conversational UIs, search engines, and more
+</p>
+
+</Slide>
+
+---
+
+<Slide header="false">
+
+<div class="visually-hidden">
+# Semantics IRL
+</div>
+
+![An Event Apart homepage in Chrome DevTools](../aea-grid-inspect.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Tools for testing semantics
+
+- [Accessibility Insights: Headings](https://accessibilityinsights.io)
+- [Firefox Web Developer Extension](https://addons.mozilla.org/en-US/firefox/addon/web-developer/):<br />_Information > View Document Outline_
+- [NVDA heading navigation, elements list](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts#nvda-the_basics)
+- [Voiceover rotor](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts#vo-mac-the-rotor)
+- Browser reader modes
+
+</Slide>
+
+---
+
+<Slide>
+
+# Semantics demo
+
+http://localhost:8000/layout
+
+</Slide>
+
+---
+
+<Slide>
+
+# Practice Problem
+## Use semantic markup
+
+Add markup to a blank page and test it using Accessibility Insights.
+
+- Gatsby page shell: [pages/semantics.jsx](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/pages/semantics.jsx)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Unobtrusive motion
+
+Building safe _and_ delightful interfaces
+
+- `prefers-reduced-motion` CSS
+- media, animation playback controls
+- opt-in for autoplay
+
+https://source.opennews.org/articles/motion-sick/
+
+</Slide>
+
+---
+
+<Slide>
+
+# Animation demo
+
+<AccessibleAnimationDemo></AccessibleAnimationDemo>
+
+https://codepen.io/marcysutton/pen/yqVVeY
+
+</Slide>
+
+---
+
+<Slide>
+
+# prefers-reduced-motion
+
+<CodeBlock title="CSS" side="left">
+
+```css
+@media (prefers-reduced-motion: reduce) {
+    .animation {
+        animation: none;
+        transition: none;
+    }
+}
+```
+
+</CodeBlock>
+
+<CodeBlock title="JavaScript" side="right">
+
+```js
+var motionQuery = matchMedia('(prefers-reduced-motion)');
+function handleReduceMotionChanged() {
+  if (motionQuery.matches) {
+    /* adjust 'transition' or 'animation' properties */
+  } else { 
+    /* standard motion */
+  }
+}
+motionQuery.addListener(handleReduceMotionChanged);
+handleReduceMotionChanged(); // trigger once on load
+```
+
+</CodeBlock>
+
+[WebKit guide](https://webkit.org/blog/7551/responsive-design-for-motion/) ~ [MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# reduced-motion demo
+
+http://localhost:8000/animation
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise!
+
+Play with reduced-motion and CSS animation or transitions
+
+- React component shell: [card-flip.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/card-flip.js)
+- vanilla.js shell: https://codepen.io/marcysutton/pen/OKppJe
+
+</Slide>
+
+---
+
+<Slide>
+
+# Reduced-motion answers
+
+- React: [examples/reduced-motion](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/reduced-motion)
+- vanilla.js: https://codepen.io/marcysutton/pen/yqVVeY
+
+</Slide>
+
+---
+
+<Slide>
+
+# Progressive enhancement
+
+Emphasize core web page content first, then add layers of presentation and features on top as browsers/network connections allow
+
+<div style="width: 40%; display: inline-block; margin: 0em auto;">
+<ul style="margin-top: 0;">
+    <li>Turn off JavaScript</li>
+    <li>Provide accessible baseline markup</li>
+    <li>Add ARIA with scripting</li>
+    <li>Prioritize core user flows</li>
+</ul>
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Gatsby & SSR
+
+Output static HTML by default at build time
+
+<CodeBlock>
+
+```bash
+gatsby build
+```
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Gatsby progressive<br />enhancement demo
+
+http://localhost:8000/enhanced/tablist
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise!
+
+Play with progressive enhancement
+
+- React component shell: [components/tab-list.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/tab-list.js)
+- vanilla.js starter: https://codepen.io/marcysutton/pen/WBvRxq
+
+</Slide>
+
+---
+
+<Slide>
+
+# Progressive enhancement <br />answers
+
+- React component: [examples/tablist.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/progressive-enhancement)
+- vanilla.js: https://codepen.io/marcysutton/pen/oKBzdr
+
+</Slide>
+
+---
+
+<Slide>
+
+# Testing <span role="img" title="test tube">🧪</span>
+
+Improving quality in development
+
+- linting
+- unit tests
+- integration/end-to-end
+- accessibility test APIs
+- continuous integration
+- manual & user testing
+
+</Slide>
+
+---
+
+<Slide>
+
+# Linting
+
+Testing for quality live in a file or on a commit
+
+[eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+
+- you might need to [reconfigure rules](https://www.gatsbyjs.org/docs/making-your-site-accessible/#linting-with-eslint-jsx-plugin-a11y)
+- CSS can have an impact
+- rendering makes a difference
+
+</Slide>
+
+---
+
+<Slide>
+
+# Accessibility Units
+
+## component-level API concerns
+
+<p style="font-size: 1.5em;"><span role="img" title="puzzle piece">🧩</span></p>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Unit test approach
+
+- Test code in isolation
+- Stub inputs/fixture data
+- Often headless
+- Fast changing of state
+
+</Slide>
+
+---
+
+<Slide>
+
+# Accessibility unit tests
+
+- Component-specific behavior
+- Interaction/focus APIs
+- Text alternatives
+- ARIA states
+
+Article: [Writing Automated tests for Accessibility](https://www.deque.com/blog/writing-automated-tests-accessibility/)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Unit test demo
+
+- Dropdown with Jest: [\__tests\__](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/src/components/better/__tests__)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise
+
+Write an accessibility unit test!
+
+- Jest test shell: [dropdown.test.js](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/src/components/better/__tests__/dropdown.test.js)
+- Jasmine shell: https://codepen.io/marcysutton/pen/OKpVKZ?editors=1010
+- https://testing-library.com/docs/dom-testing-library
+- https://github.com/testing-library/jest-dom
+
+</Slide>
+
+---
+
+<Slide>
+
+# Unit testing answers
+
+- Jest test: [dropdown.test.js](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/examples/unit-testing/dropdown.test.js)
+- Jasmine test: [Modal dialog](https://codepen.io/marcysutton/pen/YbXZYK?editors=1010)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Accessible Pages
+## interroperability of components
+
+<p style="font-size: 1.5em;"><span role="img" title="newspaper">📰</span></p>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Integration &<br />end-to-end tests
+
+- Real-world browser testing
+- Document/page-level rules
+- Widget interrop
+- Color contrast
+- Framework flexibility
+
+</Slide>
+
+---
+
+<Slide>
+
+# [Selenium Webdriver example](https://github.com/marcysutton/axe-webdriverjs-demo)
+
+<CodeBlock>
+
+```js
+const WebDriver = require('selenium-webdriver')
+ 
+describe('Keyboard tests', () => {
+    let driver = new selenium.Builder().forBrowser('chrome').build()
+        driver.get('http://localhost:4000').then(() => done())
+
+    it('should change state with the keyboard', () => {
+      var selector = 'span[role="radio"][aria-labelledby="radiogroup-0-label-0"]';
+
+      driver.findElement(selenium.By.css(selector))
+        .then((element) => {
+            element.sendKeys(Key.SPACE)
+            return element
+        })
+        .then((element) => element.getAttribute('aria-checked'))
+        .then((attr) => {
+            expect(attr).toEqual('true')
+        })
+    })
+})
+```
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# [Cypress example](https://www.gatsbyjs.org/docs/end-to-end-testing/)
+
+<CodeBlock>
+
+```js
+/// <reference types="Cypress" />
+describe("Accessibility checks", () => {
+  beforeEach(() => {
+    cy.visit("/")
+    cy.wait(500)
+  })
+  it("Checks if footer link is focusable and has the correct attributes", () => {
+    cy.getAllByText("Gatsby").focus()
+    cy.focused()
+      .should("have.text", "Gatsby")
+      .should("have.attr", "href", "https://www.gatsbyjs.org")
+      .should("not.have.css", "outline-width", "0px")
+  })
+})
+```
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# _No matter what kind of test:<br />focus on the outcome,<br />not the code implementation_ ✨
+
+</Slide>
+
+---
+
+<Slide>
+
+# Using an A11y test API
+## Rules you don’t have to write
+
+<div style="display: inline-block; width: 50%;">
+
+- [axe-core](https://github.com/dequelabs/axe-core)
+- [cypress-axe](https://www.npmjs.com/package/cypress-axe)
+- [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs)
+
+</div>
+<div style="display: inline-block; width: 50%; vertical-align: top;">
+
+- [WAVE](https://wave.webaim.org/api/)
+- [accessibilityjs](https://github.com/github/accessibilityjs)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse/)*
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# What can we automate?
+
+Tests can catch roughly 30-50% of accessibility issues,<br />depending on the rule set
+
+👉 _Screen readers can’t be automated_
+
+</Slide>
+
+---
+
+<Slide>
+
+<div style="text-align: left;">
+    <h1><em>Write a combination<br />of tests to catch a variety<br />of bugs</em> <span role="img" title="laptop">💻</span><span role="img" title="magnifying glass">🔎</span><span role="img" title="bug">🐛</span></h1>
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Integration test demo
+
+[cypress/integration/index.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/cypress/integration/index.js)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise!
+
+Write an end-to-end accessibility test for<br />keyboard interactions and/or with an accessibility test API
+
+- Cypress test shell: [index.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/cypress/integration/index.js)
+- Cypress API docs: https://cypress.io
+
+</Slide>
+
+---
+
+<Slide>
+
+# Integration test answers
+
+- Cypress tests: [examples/integration-testing](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/integration-testing)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Continuous Integration
+
+Opportunities to test for accessibility on every commit,<br />pull request, and deployment
+
+https://marcysutton.github.io/a11y-and-ci/
+
+</Slide>
+
+---
+
+<Slide>
+
+# Track who broke the build
+https://twitter.com/zqxwzq/status/868039653697482753
+
+<div style="max-width: 65%; margin: 1em auto;">
+
+![A TV monitor with broken build bandits wanted for bounty](../ci-bandits.jpg)
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Spoiler: we need to do more
+
+Automated testing and linting only gets us so far.<br />Projects need manual human testing, too
+
+<span role="img" title="bow in respect">🙇‍♀️</span>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Manual testing advice
+From Eric Bailey
+
+https://www.smashingmagazine.com/2018/09/importance-manual-accessibility-testing/
+
+</Slide>
+
+---
+
+<Slide>
+
+# Accessibility<br />User Testing
+
+- [Access Works](https://access-works.com/)
+- [Fable Tech Labs](https://www.makeitfable.com/)
+
+https://inclusivedesign24.org/2019/
+
+</Slide>
+
+---
+
+<Slide>
+
+# Q & A
+
+</Slide>
