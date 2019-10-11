@@ -1,6 +1,6 @@
 context("Nav menu", () => {
     beforeEach(() => {
-        cy.visit(`https://marcysutton.github.io/js-a11y-workshop`)
+        cy.visit(`https://marcysutton.github.io/gatsby-a11y-workshop`)
         cy.injectAxe()
         cy.wait(100)
     })

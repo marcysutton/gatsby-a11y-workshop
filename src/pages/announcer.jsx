@@ -18,7 +18,7 @@ const LiveRegionDemoPage = () => {
         </RouteTargetHeading>
         <section className="two-col">
           <div>
-          <h3>Inaccessible async form demo  [<a href="https://github.com/marcysutton/js-a11y-workshop/tree/master/src/components/bad/async-form.js" aria-label="accessible demo source">source</a>]</h3>
+          <h3>Inaccessible async form demo  [<a href="https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/src/components/bad/async-form.js" aria-label="accessible demo source">source</a>]</h3>
           <InaccessibleAsyncFormDemo />
           </div>
           <div>

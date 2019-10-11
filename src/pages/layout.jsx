@@ -13,7 +13,7 @@ const LayoutPage = () => (
             Semantics and CSS layout
         </RouteTargetHeading>
         <p>CSS layouts are modern now. You can use CSS Grid and HTML5! Inspect these semantic layouts in DevTools and screen readers. Play with the rotor/elements list, heading navigation, </p>
-        <p><strong>[<a href="https://github.com/marcysutton/js-a11y-workshop/blob/master/src/pages/layout.jsx">page source</a>]</strong></p>
+        <p><strong>[<a href="https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/pages/layout.jsx">page source</a>]</strong></p>
         <div className="semantic-layout">
             <div data-el="div" className="grid-wrap-2">
                 <div data-el="div">

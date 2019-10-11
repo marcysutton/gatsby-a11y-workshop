@@ -37,7 +37,7 @@ const ReducedMotionDemoPage = () => (
       <section className="two-col">
         <div>
           <h3>Inaccessible animation demo <br />
-          [<a href="https://github.com/marcysutton/js-a11y-workshop/blob/master/src/components/bad/card-flip.js">source 1</a>]</h3>
+          [<a href="https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/bad/card-flip.js">source 1</a>]</h3>
           <InaccessibleCardFlip
             member={friends[0]}
             memberName={friends[0].name}
@@ -48,7 +48,7 @@ const ReducedMotionDemoPage = () => (
         </div>
         <div>
           <h3>Animation demo 2: add styles <br />
-          [<a href="https://github.com/marcysutton/js-a11y-workshop/blob/master/src/components/better/card-flip.js">source 2</a>]</h3>
+          [<a href="https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/card-flip.js">source 2</a>]</h3>
           <BetterCardFlip
             member={friends[1]}
             memberName={friends[1].name}

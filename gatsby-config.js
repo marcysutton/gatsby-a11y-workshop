@@ -2,12 +2,12 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `Accessibility in JavaScript Applications`,
+    title: `Building Accessible Sites with Gatsby`,
     description:
-      `Learn the necessary techniques and tools for building inclusive web applications with JavaScript.`,
+      `Learn the necessary techniques and tools for building inclusive web applications with Gatsby and React.js.`,
     author: `@marcysutton`,
   },
-  pathPrefix: "/js-a11y-workshop",
+  pathPrefix: "/gatsby-a11y-workshop",
   plugins: [
     {
       resolve: `gatsby-theme-mdx-deck`,
@@ -40,8 +40,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `js-a11y-workshop`,
-        short_name: `jsa11y`,
+        name: `gatsby-a11y-workshop`,
+        short_name: `gatsbya11y`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

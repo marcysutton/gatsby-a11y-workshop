@@ -20,7 +20,7 @@ const DropdownPage = () => (
 
       <section className="two-col">
         <div>
-          <h3>Bad link list dropdown [<a href="https://github.com/marcysutton/js-a11y-workshop/blob/master/src/components/bad/dropdown.js" aria-label="inaccessible demo source">source</a>]</h3>
+          <h3>Bad link list dropdown [<a href="https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/bad/dropdown.js" aria-label="inaccessible demo source">source</a>]</h3>
           <BadDropdown activatorText="About" items={[{
             text: 'Overview',
             url: '#'
