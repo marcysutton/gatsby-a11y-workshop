@@ -2,9 +2,9 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `Accessibility in JavaScript Applications`,
+    title: `Building Accessible Sites with Gatsby`,
     description:
-      `Learn the necessary techniques and tools for building inclusive web applications with JavaScript.`,
+      `Learn the necessary techniques and tools for building inclusive web applications with Gatsby.`,
     author: `@marcysutton`,
   },
   pathPrefix: "/gatsby-a11y-workshop",
@@ -12,7 +12,6 @@ module.exports = {
     {
       resolve: `gatsby-theme-mdx-deck`,
       options: {
-        // disable gatsby-mdx plugin – use this when your site already uses gatsby-mdx
         mdx: true,
         // source directory for decks
         contentPath: `src/slides`,

@@ -87,7 +87,7 @@ export default ({ header = 'true', children }) => (
     <Footer css={headerFooterStyles} className="footer">
       <Separator />
       <FooterByline>
-        Workshop Slides: Accessibility in JavaScript Applications ~  <span>by <a href="https://twitter.com/marcysutton">@marcysutton</a></span>
+        Workshop Slides: Building Accessible Sites with Gatsby ~  <span>by <a href="https://twitter.com/marcysutton">@marcysutton</a></span>
       </FooterByline>
     </Footer>
   </>

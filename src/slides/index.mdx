@@ -59,14 +59,32 @@ http://bit.ly/microsoft-inclusive-toolkit
 
 <Slide>
 
-# JavaScript Applications
+# Gatsby Sites
 
-- Client-rendered: no traditional page reloads
-- Built with frameworks—React, Vue, Ember, Angular, etc.
-- Sometimes server-rendered with “hydration”
-- Challenges and opportunities
+- Server-side rendered HTML pages
+- “Hydration” into React.js apps
+- Automatic client-side routing
+- Perfect for modern test tooling
+
+https://www.gatsbyjs.org/docs/glossary
 
 </Slide>
+
+---
+
+<div>
+    <a href="https://gatsbyjs.org/docs/cheat-sheet/" target="_blank">
+        <img src="../cheat-sheet_page_1.png" alt="Gatsby Cheat Sheet page 1" style="max-height: 100vh" />
+    </a>
+</div>
+
+---
+
+<div>
+    <a href="https://gatsbyjs.org/docs/cheat-sheet/" target="_blank">
+        <img src="../cheat-sheet_page_2.png" alt="Gatsby Cheat Sheet page 2" style="max-height: 100vh" />
+    </a>
+</div>
 
 ---
 
@@ -77,15 +95,14 @@ http://bit.ly/microsoft-inclusive-toolkit
 <div style="font-size: 2.2rem;">
 
 - Accessibility debugging
-- Accessibility in JavaScript apps
+- Accessibility in Gatsby sites
     - Focus management
-    - Client-side routing
     - Announcements
+    - Client-side routing
     - Semantic HTML
     - Unobtrusive motion
     - Progressive enhancement
-- Accessibility units
-- Accessible pages
+- Automated testing & linting
 - Q & A
 
 </div>
@@ -105,7 +122,7 @@ http://bit.ly/microsoft-inclusive-toolkit
 - Built with Gatsby and React
 - Server and client-rendered
 - Outputs HTML pages by default
-- Includes this slide deck
+- Includes these MDX-Deck slides
 
 <div style="display: inline-block;
     max-width: 45%;
@@ -137,10 +154,12 @@ https://github.com/marcysutton/gatsby-a11y-workshop
 <CodeBlock>
 
 ```shell
-git clone https://github.com/marcysutton/gatsby-a11y-workshop.git
+npm install -g gatsby-cli
+
+gatsby new https://github.com/marcysutton/gatsby-a11y-workshop.git
 cd gatsby-a11y-workshop
-npm install
-npm run develop
+
+gatsby develop
 ```
 
 </CodeBlock>
@@ -150,6 +169,10 @@ View the site locally: http://localhost:8000
 Online: https://marcysutton.github.io/gatsby-a11y-workshop
 
 </Slide>
+
+---
+
+<img src="../vscode-tour.png" alt="Project in VS Code" style="max-height: 100vh" />
 
 ---
 
@@ -170,32 +193,9 @@ Online: https://marcysutton.github.io/gatsby-a11y-workshop
 
 <Slide>
 
-# Prototyping with [Parcel](https://parceljs.org/)
-Modern development with any JavaScript framework/library
-
-<CodeBlock>
-
-```shell
-git clone https://github.com/marcysutton/parcel-prototype-scaffold parcel-demo
-cd parcel-demo
-
-npm install
-npm start
-```
-
-</CodeBlock>
-
-Alternatively: Codepen, Codesandbox, etc.
-
-</Slide>
-
----
-
-<Slide>
-
 # Which.js?
 
-- React
+- Gatsby + React
 - Ember
 - Angular
 - Polymer
@@ -267,13 +267,35 @@ Fire up a build in a browser and start testing
 <CodeBlock side="left">
 
 ```shell
-$ npm run build
-$ npm run serve
+$ gatsby develop
 ```
+
+<p style="display:inline-block; margin-top:2rem; text-align:left;">
+    <small>
+        <a href="http://localhost:8000">http://localhost:8000</a><br />
+        <a href="http://localhost:8000">http://localhost:8000/__graphql</a>
+        </small>
+</p>
 
 </CodeBlock>
 
-<p style="margin-top:2rem;"><small>http://localhost:9000</small></p>
+<CodeBlock side="split">
+
+vs.&nbsp;
+
+</CodeBlock>
+
+<CodeBlock side="right">
+
+```shell
+$ gatsby build && gatsby serve
+```
+
+<p style="margin-top:2rem;">
+    <small><a href="http://localhost:9000">http://localhost:9000</a></small>
+</p>
+
+</CodeBlock>
 
 </Slide>
 
@@ -475,14 +497,83 @@ Things to watch out for:
 
 ---
 
+
+
 <Slide>
 
-# Intro to Accessibility<br />in JavaScript Applications
+# Components<br />in Gatsby
+
+- [page components](https://www.gatsbyjs.org/docs/building-with-components/#page-components)
+- [non-page components](https://www.gatsbyjs.org/docs/building-with-components/#non-page-components)
+- [layout components](https://www.gatsbyjs.org/docs/layout-components/)
+
+<br />
+<a href="https://www.gatsbyjs.org/docs/building-with-components/">Building with components</a>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Functional components in action
+
+<CodeBlock side="left" title="src/components/my-component.jsx">
+
+```jsx
+import React, {useRef} from 'react'
+
+const MyComponent = (props) => {
+    return (
+        <div>
+            {/* UI stuff here */}
+        </div>
+    )
+}
+
+export default MyComponent
+```
+
+</CodeBlock>
+
+<CodeBlock side="right" marginClass="noRightMargin" title="src/pages/index.jsx">
+
+```jsx
+import React from 'react'
+import { Link } from "gatsby"
+import MyComponent from '../components/my-component'
+export default () => {
+    return (
+        <div>
+            <Link to="/some-page">Some page</Link>
+            <MyComponent />  
+        </div>
+    )
+}
+```
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# React Accessibility
+
+</Slide>
+
+---
+
+<Slide>
+
+# Accessibility in Gatsby Sites
 
 <div style="width: 55%; margin: 1em auto">
 
-- Focus management
 - Live Region announcements
+- Focus management
 - Semantic HTML
 - Unobtrusive motion
 - Progressive enhancement
@@ -662,6 +753,7 @@ The first [rule of ARIA](https://www.w3.org/TR/using-aria/) is _don’t use it_
 - `aria-hidden="true"` and `tabindex="-1"`
 - `inert` (+ [polyfill](https://github.com/WICG/inert))
 - CSS `display: none`
+- `aria-modal`
 
 <div class="modal-curtain" hidden></div>
 
@@ -707,6 +799,7 @@ http://w3c.github.io/aria-practices/
 
 ```html
 <a href="/page">Page</a>
+<Link to="/page">Page</Link>
 ```
 
 </CodeBlock>
@@ -848,8 +941,7 @@ http://localhost:8000/dropdown
 # Exercise
 ## Create an accessible dropdown
 
-- React component shell: [dropdown.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/dropdown.js)
-- vanilla.js shell: https://codepen.io/marcysutton/pen/aeJdNq
+- Component shell: [dropdown.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/dropdown.js)
 
 </Slide>
 
@@ -857,90 +949,9 @@ http://localhost:8000/dropdown
 
 <Slide>
 
-# Dropdown answers
+# Exercise answer
 
-- React: [dropdown component](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/dropdown/)
-- vanilla.js: https://codepen.io/marcysutton/pen/JgjYVv
-
-</Slide>
-
----
-
-<Slide>
-
-<div style="margin-top: -2em">
-
-# Client-side routing
-
-Navigation where JavaScript controls browser history<br />and dynamically maps URLs to each page or view
-
-![Animation of Grommet sorting letters](../mail.gif)
-
-[User testing research on the Gatsby blog](https://www.gatsbyjs.org/blog/2019-07-11-user-testing-accessible-client-routing/)
-
-</div>
-
-</Slide>
-
----
-
-<Slide>
-
-# Routing approach
-
-- A small UI control in each view target, like a skip link
-- Label with nearby content and its action,<br />e.g. "Portfolio, skip to navigation"
-- When a user clicks a nav link, move focus to this control
-
-![focus diagram](../focus-diagram.png)
-
-</Slide>
-
----
-
-<Slide>
-
-# Focus management<br />patterns: underlying tech
-
-- Access DOM nodes with [React refs](https://reactjs.org/docs/refs-and-the-dom.html)
-- New: [React FocusScopes](https://twitter.com/devongovett/status/1100829054800846848)
-- [Vue.js $refs](https://vuejs.org/v2/api/#vm-refs)
-- [Ember suggestions](https://twitter.com/marcysutton/status/1154942698408648704)
-- Other framework APIs?
-- Custom focus manager APIs
-
-</Slide>
-
----
-
-<Slide>
-
-# Client-side routing demo
-
-http://localhost:8000
-
-</Slide>
-
----
-
-<Slide>
-
-# Exercise
-## Focus on client-side route change
-
-- Gatsby [`onRouteUpdate` method](https://www.gatsbyjs.org/docs/browser-apis/#onRouteUpdate) and skip link focus
-- vanilla.js shell: https://codepen.io/marcysutton/pen/wVJeJQ
-
-</Slide>
-
----
-
-<Slide>
-
-# Client-side routing answers
-
-- Gatsby component: [examples/client-side-routing](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/examples/client-side-routing)
-- vanilla.js: https://codepen.io/marcysutton/pen/MNpmMd
+- [dropdown component](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/dropdown/)
 
 </Slide>
 
@@ -1045,8 +1056,7 @@ http://localhost:8000/announcer
 # Exercise
 ## Build a live region
 
-- React.js shell: [live-region](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/src/components/better/live-region.js)
-- vanilla.js shell: https://codepen.io/marcysutton/pen/xvqdzx
+- [live-region](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/src/components/better/live-region.js)
 
 </Slide>
 
@@ -1054,10 +1064,101 @@ http://localhost:8000/announcer
 
 <Slide>
 
-# Live region answers
+# Exercise answer
+## Live region
 
-- React component: [examples/live-region](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/examples/live-region)
-- vanilla.js: https://codepen.io/marcysutton/pen/ZgeKaV
+- [examples/live-region](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/examples/live-region)
+
+</Slide>
+
+---
+
+<Slide>
+
+<div style="margin-top: -2em">
+
+# Client-side routing
+
+Navigation where JavaScript controls browser history<br />and dynamically maps URLs to each page or view
+
+![Animation of Grommet sorting letters](../mail.gif)
+
+[User testing research on the Gatsby blog](https://www.gatsbyjs.org/blog/2019-07-11-user-testing-accessible-client-routing/)
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Gatsby + @reach/router
+
+- Automatic client-routing
+- Focus management
+- Can be overridden in `gatsby-browser.js`
+- Note: improvements currently underway
+
+</Slide>
+
+---
+
+<Slide>
+
+# A11y routing research
+
+- A small UI control in each view target, like a skip link
+- Label with nearby content and its action,<br />e.g. "Portfolio, skip to navigation"
+- When a user clicks a nav link, move focus to this control
+
+![focus diagram](../focus-diagram.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Focus management<br />patterns: underlying tech
+
+- Access DOM nodes with [React refs](https://reactjs.org/docs/refs-and-the-dom.html)
+- New: [React FocusScopes](https://twitter.com/devongovett/status/1100829054800846848)
+- [Vue.js $refs](https://vuejs.org/v2/api/#vm-refs)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Client-side routing demo
+
+http://localhost:8000
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise
+## Focus on client-side route change
+
+- Use Gatsby's [`onRouteUpdate` method](https://www.gatsbyjs.org/docs/browser-apis/#onRouteUpdate)
+- Send focus to skip link
+- Announce page in ARIA Live Region
+
+</Slide>
+
+---
+
+<Slide>
+
+# Exercise answer
+## Client-side routing
+
+- Gatsby component: [examples/client-side-routing](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/examples/client-side-routing)    
 
 </Slide>
 
@@ -1226,8 +1327,7 @@ http://localhost:8000/animation
 
 Play with reduced-motion and CSS animation or transitions
 
-- React component shell: [card-flip.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/card-flip.js)
-- vanilla.js shell: https://codepen.io/marcysutton/pen/OKppJe
+- [card-flip.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/card-flip.js)
 
 </Slide>
 
@@ -1298,8 +1398,7 @@ http://localhost:8000/enhanced/tablist
 
 Play with progressive enhancement
 
-- React component shell: [components/tab-list.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/tab-list.js)
-- vanilla.js starter: https://codepen.io/marcysutton/pen/WBvRxq
+- [components/tab-list.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/tab-list.js)
 
 </Slide>
 
@@ -1307,10 +1406,10 @@ Play with progressive enhancement
 
 <Slide>
 
-# Progressive enhancement <br />answers
+# Exercise answer
+## Progressive enhancement
 
-- React component: [examples/tablist.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/progressive-enhancement)
-- vanilla.js: https://codepen.io/marcysutton/pen/oKBzdr
+- [examples/tablist.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/progressive-enhancement)
 
 </Slide>
 
@@ -1406,7 +1505,6 @@ Article: [Writing Automated tests for Accessibility](https://www.deque.com/blog/
 Write an accessibility unit test!
 
 - Jest test shell: [dropdown.test.js](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/src/components/better/__tests__/dropdown.test.js)
-- Jasmine shell: https://codepen.io/marcysutton/pen/OKpVKZ?editors=1010
 - https://testing-library.com/docs/dom-testing-library
 - https://github.com/testing-library/jest-dom
 
@@ -1416,10 +1514,10 @@ Write an accessibility unit test!
 
 <Slide>
 
-# Unit testing answers
+# Exercise answer
+## Unit testing
 
 - Jest test: [dropdown.test.js](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/examples/unit-testing/dropdown.test.js)
-- Jasmine test: [Modal dialog](https://codepen.io/marcysutton/pen/YbXZYK?editors=1010)
 
 </Slide>
 
@@ -1657,7 +1755,17 @@ https://www.smashingmagazine.com/2018/09/importance-manual-accessibility-testing
 - [Access Works](https://access-works.com/)
 - [Fable Tech Labs](https://www.makeitfable.com/)
 
-https://inclusivedesign24.org/2019/
+https://www.youtube.com/watch?v=Tr21FqQQv-U
+
+</Slide>
+
+---
+
+<Slide>
+
+## Accessibility Resources
+
+https://www.gatsbyjs.org/docs/making-your-site-accessible/
 
 </Slide>
 

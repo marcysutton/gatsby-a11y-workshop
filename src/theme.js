@@ -22,7 +22,7 @@ const Provider = props => {
 
   return <>
     {props.children}
-    <Counter>{index}/{length}</Counter>
+    <Counter>{index + 1}/{length}</Counter>
   </>
 }
 

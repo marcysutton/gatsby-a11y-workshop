@@ -24,7 +24,6 @@ const IndexPage = () => (
         <li><a href="https://addons.mozilla.org/en-US/firefox/addon/web-developer/">Firefox Web Developer Extension</a></li>
         <li><a href="https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a">Chrome Accessibility Inspector</a></li>
         <li><a href="https://developers.google.com/web/updates/2018/01/devtools#contrast">Chrome Color Contrast Debugger</a></li>
-        <li><a href="https://marcysutton.com/angular-protractor-accessibility-plugin/">Protractor Accessibility Plugin</a></li>
         <li><a href="https://a11ysupport.io/">Accessibility Support matrix</a></li>
       </ul>
 
@@ -35,17 +34,9 @@ const IndexPage = () => (
         <li><a href="https://webaim.org/articles/jaws/">JAWS</a></li>
       </ul>
 
-      <h3>Framework accessibility docs</h3>
-      <ul>
-        <li><a href="https://reactjs.org/docs/accessibility.html">Reactjs.org</a></li>
-        <li><a href="https://guides.emberjs.com/release/reference/accessibility-guide/">Emberjs.com</a></li>
-        <li><a href="https://angular.io/guide/accessibility">Angular.io</a></li>
-        <li><a href="https://facebook.github.io/react-native/docs/accessibility">React Native</a></li>
-        <li><a href="https://ionicframework.com/docs/native/mobile-accessibility">Ionic mobile framework</a></li>
-      </ul>
-
       <h3 id="Resources">Resources</h3>
       <ul>
+        <li><a href="https://reactjs.org/docs/accessibility.html">React Accessibility</a></li>
         <li><a href="http://a11yproject.com/">A11y Project</a></li>
         <li><a href="https://dequeuniversity.com">Deque University</a></li>
         <li><a href="http://webaim.org">WebAIM</a></li>
