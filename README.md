@@ -24,16 +24,16 @@ This project was started with [gatsby-starter-mdx-basic](https://github.com/chri
 
 _Note: This repo requires [Node 12 and npm](https://nodejs.org) to be installed._
 
-1. Create a new Gatsby site and slide deck using this starter
-
-```sh
-git clone https://github.com/marcysutton/gatsby-a11y-workshop
-```
-
-2. Install Gatsby CLI:
+1. Install Gatsby CLI:
 
 ```sh
 npm install -g gatsby-cli
+```
+
+1. Create a new Gatsby site and slide deck using this starter
+
+```sh
+gatsby new gatsby-a11y-workshop https://github.com/marcysutton/gatsby-a11y-workshop
 ```
 
 3. Go into the directory and start the development server
