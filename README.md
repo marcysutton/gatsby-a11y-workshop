@@ -1,8 +1,8 @@
-# Accessibility in JavaScript Applications
+# Building Accessible Sites with Gatsby
 
-Learn the necessary techniques and tools for building inclusive web applications with JavaScript from Gatsby's Head of Learning Marcy Sutton.
+Learn the necessary techniques and tools for building inclusive web applications with Gatsby and React.js from Gatsby's Head of Learning Marcy Sutton.
 
-Presenting at [Frontend Masters](https://frontendmasters.com/workshops/javascript-accessibility/)
+Presenting at [Smashing Conf NYC](https://smashingconf.com/ny-2019/)
 
 Some key takeaways:
 
@@ -14,9 +14,9 @@ Some key takeaways:
 - Practice announcing view changes with your code and keeping screen reader users up to date.
 - Achieve wins with semantic markup, unobtrusive animation, and progressive enhancement.
 
-App URL: https://marcysutton.github.io/js-a11y-workshop
+App URL: https://marcysutton.github.io/gatsby-a11y-workshop
 
-Workshop slides: https://marcysutton.github.io/js-a11y-workshop/slides/
+Workshop slides: https://marcysutton.github.io/gatsby-a11y-workshop/slides/
 
 ---
 
@@ -27,26 +27,35 @@ _Note: This repo requires [Node 12 and npm](https://nodejs.org) to be installed.
 1. Create a new Gatsby site and slide deck using this starter
 
 ```sh
-git clone https://github.com/marcysutton/js-a11y-workshop
+git clone https://github.com/marcysutton/gatsby-a11y-workshop
 ```
 
-2. Go into the directory, install dependencies, and start the development server
+2. Install Gatsby CLI:
 
 ```sh
-cd js-a11y-workshop
-npm install
-npm start
+npm install -g gatsby-cli
+```
+
+3. Go into the directory and start the development server
+
+```sh
+cd gatsby-a11y-workshop
+gatsby develop
 ```
 
     View in a browser: http://localhost:8000
 
-3. Edit files:
+4. Edit files:
 
-    - Site pages: [`src/pages/*`](https://github.com/marcysutton/js-a11y-workshop/blob/master/src/pages)
-    - Site components: [`src/components/*`](https://github.com/marcysutton/js-a11y-workshop/blob/master/src/components)
-    - Templates: [`src/templates/*`](https://github.com/marcysutton/js-a11y-workshop/blob/master/src/templates)
-    - Slide content: [`src/slides/index.mdx`](https://github.com/marcysutton/js-a11y-workshop/blob/master/src/slides/index.mdx)
+    - Site pages: [`src/pages/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/pages)
+    - Site components: [`src/components/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components)
+    - Templates: [`src/templates/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/templates)
+    - Slide content: [`src/slides/index.mdx`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/slides/index.mdx)
 
-4. To look at the answers from the exercises, check out the [`/examples`](https://github.com/marcysutton/js-a11y-workshop/blob/master/examples) directory in the `master` branch
+5. To look at the answers from the exercises, check out the [`/examples`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples) directory in the `master` branch
 
-You can also check out the `master` branch to follow along with the workshop exercises: https://github.com/marcysutton/js-a11y-workshop/tree/master
+You can also check out the `solutions` branch to see everything in action: https://github.com/marcysutton/gatsby-a11y-workshop/tree/solutions
+
+### Prerequisites
+1. Have a text editor installed, i.e. VSCode
+2. Have Node.js 12+ and npm installed
