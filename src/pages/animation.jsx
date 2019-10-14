@@ -7,6 +7,7 @@ import RouteTargetHeading from "../components/better/route-target-heading.js"
 
 import InaccessibleCardFlip from "../components/bad/card-flip"
 import BetterCardFlip from "../components/better/card-flip"
+import AnimationDemo from "../components/better/animation"
 
 import rainierImg from "../images/rainier-headshot.jpg"
 import bagleyImg from "../images/bagley.jpg"
@@ -57,6 +58,7 @@ const ReducedMotionDemoPage = () => (
             bio={friends[1].bio}
             twitterLink={friends[1].twitterLink} />
         </div>
+        <AnimationDemo />
       </section>
     </div>
   </Layout>

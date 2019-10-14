@@ -66,67 +66,23 @@ const Demo = styled.div`
   
   @keyframes pulse {
       25% {
-          opacity: 0.4;
+        opacity: 0.4;
       }
       
       100% {
-          transform: scale(1);
-      opacity: 0;
+        transform: scale(1);
+        opacity: 0;
       }	
-  }
-  
-  
-  .no-animate {
-    ${noAnimate}
-  }
-  
-  /* if reduced-motion is selected on OSX/iOS */
-  @media (prefers-reduced-motion) {
-    /* hide toggle button */
-    .animationToggle {
-      display: none;
-    }
-    /* make sure animations actually stop */
-    ${noAnimate}
   }
 `
 
 const AccessibleAnimationDemo = () => {
-    let [animating, setAnimating] = useState(false)
-    let [toggleText, setToggleText] = useState('on')
 
-    const animationTarget = useRef()
-    const animationToggle = useRef()
-
-    useEffect(() => {
-        if (localStorage.getItem('animating') === 'false') {
-            disableAnimation()
-        }
-    }, [animating])
-
-    function toggleBtnHandler(event) {
-        if (animating) {
-            disableAnimation()
-        } else {
-            enableAnimation()
-        }
-    }
-    function disableAnimation() {
-        setToggleText('on')
-        setAnimating(false)
-        localStorage.setItem('animating', 'false')
-    }
-    function enableAnimation() {
-        setToggleText('off')
-        setAnimating(true)
-        localStorage.setItem('animating', 'true')
-    }
     return (
         <Demo>
             <div
-                className={animating ? `animationTarget` : `animationTarget no-animate`}
+                className={`animationTarget`}
                 id="animation-target"
-                ref={animationTarget}
             >
                 <svg className="pulse" viewBox="0 0 1024 1024" aria-labelledby="svg-title">
                     <title id="svg-title">Animating circles</title>
@@ -136,13 +92,7 @@ const AccessibleAnimationDemo = () => {
                 </svg>
             </div>
             <div style={{textAlign: 'center'}}>
-                <button
-                    className="animationToggle"
-                    id="animation-toggle"
-                    ref={animationToggle}
-                    onClick={toggleBtnHandler}>
-                    Turn <span>{toggleText}</span> animation
-                </button>
+
             </div>
         </Demo>
     )

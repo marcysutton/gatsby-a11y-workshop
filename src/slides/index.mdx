@@ -560,15 +560,42 @@ export default () => {
 
 <Slide>
 
-# React Accessibility
+# We still love u, class components
+
+<CodeBlock side="left">
+
+```jsx
+import React, {Component} from 'react'
+
+class MyComponent extends Component {
+    constructor() {
+        super()
+    }
+    // lifecycle methods here
+    render {
+        return (
+            <div>
+                {/* UI stuff here */}
+            </div>
+        )
+    }
+}
+export default MyComponent
+```
+
+</CodeBlock>
 
 </Slide>
 
 ---
 
+<img src="../chrome-devtools-component-tree.png" alt="Rendered HTML tree in Chrome devTools" style="max-height: 100vh" />
+
+---
+
 <Slide>
 
-# Accessibility in Gatsby Sites
+# Accessibility in JavaScript Applications (& Gatsby sites)
 
 <div style="width: 55%; margin: 1em auto">
 
@@ -951,7 +978,7 @@ http://localhost:8000/dropdown
 
 # Exercise answer
 
-- [dropdown component](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/dropdown/)
+- [examples/dropdown](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/dropdown/)
 
 </Slide>
 
@@ -1765,7 +1792,8 @@ https://www.youtube.com/watch?v=Tr21FqQQv-U
 
 ## Accessibility Resources
 
-https://www.gatsbyjs.org/docs/making-your-site-accessible/
+- https://www.gatsbyjs.org/docs/making-your-site-accessible/
+- https://reactjs.org/docs/accessibility.html
 
 </Slide>
 
