@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react"
-import uuid from "uuid"
 
 import "./dropdown.scss"
 
@@ -48,6 +47,7 @@ const Dropdown = ({ activatorText = 'Dropdown', items = [] }) => {
                 onClick={clickHandler}
                 className="dropdown-activator"
                 ref={activatorRef}
+                data-testid="dropdown-activator"
             >
                 {activatorText}
             </button>
@@ -56,7 +56,8 @@ const Dropdown = ({ activatorText = 'Dropdown', items = [] }) => {
                 ref={dropdownListRef}
                 tabIndex="-1"
                 className={`dropdown-itemList ${isOpen ? 'active' : ''}`}
-                role="list">
+                role="list"
+                data-testid="dropdown-itemList">
                 { items.map((item, index) => {
                     return <li key={index} role="listitem">
                         <a href={item.url}>{item.text}</a>

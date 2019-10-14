@@ -780,7 +780,7 @@ The first [rule of ARIA](https://www.w3.org/TR/using-aria/) is _don’t use it_
 - `aria-hidden="true"` and `tabindex="-1"`
 - `inert` (+ [polyfill](https://github.com/WICG/inert))
 - CSS `display: none`
-- `aria-modal`
+- `aria-modal`*
 
 <div class="modal-curtain" hidden></div>
 
@@ -948,6 +948,18 @@ const Layout = () => (
 ```
 
 </CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Focus management<br />patterns: underlying tech
+
+- Access DOM nodes with [React refs](https://reactjs.org/docs/refs-and-the-dom.html)
+- New: [React FocusScopes](https://twitter.com/devongovett/status/1100829054800846848)
+- [Vue.js $refs](https://vuejs.org/v2/api/#vm-refs)
 
 </Slide>
 
@@ -1147,18 +1159,6 @@ Navigation where JavaScript controls browser history<br />and dynamically maps U
 
 <Slide>
 
-# Focus management<br />patterns: underlying tech
-
-- Access DOM nodes with [React refs](https://reactjs.org/docs/refs-and-the-dom.html)
-- New: [React FocusScopes](https://twitter.com/devongovett/status/1100829054800846848)
-- [Vue.js $refs](https://vuejs.org/v2/api/#vm-refs)
-
-</Slide>
-
----
-
-<Slide>
-
 # Client-side routing demo
 
 http://localhost:8000
@@ -1196,7 +1196,7 @@ http://localhost:8000
 # Semantic HTML ✨
 
 - Use headings & landmarks
-- Start wih native UI controls
+- Start with native UI controls
 - Build semantics into templates
 - Verify assistive tech output
 
@@ -1532,7 +1532,7 @@ Article: [Writing Automated tests for Accessibility](https://www.deque.com/blog/
 Write an accessibility unit test!
 
 - Jest test shell: [dropdown.test.js](https://github.com/marcysutton/gatsby-a11y-workshop/tree/master/src/components/better/__tests__/dropdown.test.js)
-- https://testing-library.com/docs/dom-testing-library
+- https://testing-library.com/docs/dom-testing-library/intro
 - https://github.com/testing-library/jest-dom
 
 </Slide>
