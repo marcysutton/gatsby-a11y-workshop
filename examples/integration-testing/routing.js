@@ -1,7 +1,5 @@
 /// <reference types="Cypress" />
 describe("Accessibility checks", () => {
-    beforeEach(() => {
-    })
     it("Has no detectable a11y violations on load", () => {
       cy.visit("http://localhost:8000")
       cy.injectAxe()
