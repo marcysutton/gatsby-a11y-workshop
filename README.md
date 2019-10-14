@@ -30,27 +30,32 @@ _Note: This repo requires [Node 12 and npm](https://nodejs.org) to be installed.
 git clone https://github.com/marcysutton/gatsby-a11y-workshop
 ```
 
-2. Go into the directory, install dependencies, and start the development server
+2. Install Gatsby CLI:
+
+```sh
+npm install -g gatsby-cli
+```
+
+3. Go into the directory and start the development server
 
 ```sh
 cd gatsby-a11y-workshop
-npm install
-npm start
+gatsby develop
 ```
 
     View in a browser: http://localhost:8000
 
-3. Edit files:
+4. Edit files:
 
     - Site pages: [`src/pages/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/pages)
     - Site components: [`src/components/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components)
     - Templates: [`src/templates/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/templates)
     - Slide content: [`src/slides/index.mdx`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/slides/index.mdx)
 
-4. To look at the answers from the exercises, check out the [`/examples`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples) directory in the `master` branch
+5. To look at the answers from the exercises, check out the [`/examples`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples) directory in the `master` branch
 
 You can also check out the `solutions` branch to see everything in action: https://github.com/marcysutton/gatsby-a11y-workshop/tree/solutions
 
 ### Prerequisites
 1. Have a text editor installed, i.e. VSCode
-2. Have the Gatsby CLI (gatsby-cli) installed globally by running ```npm install -g gatsby-cli```
+2. Have Node.js 12+ and npm installed
