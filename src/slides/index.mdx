@@ -72,6 +72,52 @@ https://www.gatsbyjs.org/docs/glossary
 
 ---
 
+<Slide>
+
+<img style="height: 90vh; margin-top: -1em;" src="../how-gatsby-works.png" alt="How Gatsby Works" />
+
+</Slide>
+
+---
+
+<Slide>
+
+# What we’ll cover
+
+<div style="font-size: 2.2rem;">
+
+- Basic concepts of Gatsby
+- Accessibility debugging
+- Accessibility in Gatsby sites
+    - Focus management
+    - Announcements
+    - Client-side routing
+    - Semantic HTML
+    - Unobtrusive motion
+    - Progressive enhancement
+- Automated testing & linting
+
+</div>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Gatsby<br />Building Blocks
+
+- [Gatsby API Files](https://www.gatsbyjs.org/docs/api-files/)
+- [GraphQL Data Layer](https://www.gatsbyjs.org/docs/graphql-concepts/)
+- [Creating Pages](https://www.gatsbyjs.org/docs/creating-and-modifying-pages/)
+- [Plugins, Themes & Starters](https://www.gatsbyjs.org/docs/plugins-themes-and-starters/)
+- [Linking Between Pages](https://www.gatsbyjs.org/docs/linking-between-pages/)
+- [Deployment & Hosting](https://www.gatsbyjs.org/docs/deploying-and-hosting/)
+
+</Slide>
+
+---
+
 <div>
     <a href="https://gatsbyjs.org/docs/cheat-sheet/" target="_blank">
         <img src="../cheat-sheet_page_1.png" alt="Gatsby Cheat Sheet page 1" style="max-height: 100vh" />
@@ -85,29 +131,6 @@ https://www.gatsbyjs.org/docs/glossary
         <img src="../cheat-sheet_page_2.png" alt="Gatsby Cheat Sheet page 2" style="max-height: 100vh" />
     </a>
 </div>
-
----
-
-<Slide>
-
-# What we’ll cover
-
-<div style="font-size: 2.2rem;">
-
-- Accessibility debugging
-- Accessibility in Gatsby sites
-    - Focus management
-    - Announcements
-    - Client-side routing
-    - Semantic HTML
-    - Unobtrusive motion
-    - Progressive enhancement
-- Automated testing & linting
-- Q & A
-
-</div>
-
-</Slide>
 
 ---
 
@@ -147,6 +170,8 @@ https://www.gatsbyjs.org/docs/glossary
 
 # Install time
 
+Node.js 12+ recommended
+
 </div>
 
 https://github.com/marcysutton/gatsby-a11y-workshop
@@ -176,9 +201,13 @@ Online: https://marcysutton.github.io/gatsby-a11y-workshop
 
 ---
 
+![GraphiQL explorer for this app](../graphiql.png)
+
+---
+
 <Slide>
 
-# Get some tools
+# Get some<br />accessibility tools
 
 ⚒
 
@@ -213,16 +242,6 @@ Online: https://marcysutton.github.io/gatsby-a11y-workshop
 ## People just want to use your site
 
 ![Elmo](../elmo-shrug.gif)
-
-</Slide>
-
----
-
-<Slide>
-
-# Responsive design<br />is good for accessibility
-
-<img alt="zoomed-in view of a desktop prototype" src="../magnification-a11y.png" style="margin-top: 1em; max-height: 500px;" />
 
 </Slide>
 
@@ -355,6 +374,16 @@ $ gatsby build && gatsby serve
 Uses platform Accessibility APIs to communicate page<br /> structure & content to assistive technologies
 
 ![Chrome accessibility tree dump](../chrome-accessibility-tree.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# What are platform<br />Accessibility APIs?
+
+https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/
 
 </Slide>
 
@@ -1014,7 +1043,7 @@ Notify assistive tech users without moving focus
 - Asynchronous save / update / etc.
 - Combobox usage / list filtering
 - Chat widgets
-- Title changes*
+- Title changes
 
 </Slide>
 
@@ -1136,8 +1165,7 @@ Navigation where JavaScript controls browser history<br />and dynamically maps U
 
 - Automatic client-routing
 - Focus management
-- Can be overridden in `gatsby-browser.js`
-- Note: improvements currently underway
+- [Recent improvements in Gatsby core](https://github.com/gatsbyjs/gatsby/pull/19290)
 
 </Slide>
 
@@ -1148,10 +1176,21 @@ Navigation where JavaScript controls browser history<br />and dynamically maps U
 # A11y routing research
 
 - A small UI control in each view target, like a skip link
-- Label with nearby content and its action,<br />e.g. "Portfolio, skip to navigation"
+- Label with its action, e.g. "skip to navigation"
 - When a user clicks a nav link, move focus to this control
+- Use a Live Region to announce page change*
 
 ![focus diagram](../focus-diagram.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Responsive design<br />is good for accessibility
+
+<img alt="zoomed-in view of a desktop prototype" src="../magnification-a11y.png" style="margin-top: 1em; max-height: 500px;" />
 
 </Slide>
 
@@ -1227,6 +1266,34 @@ Semantic HTML communicates what's on a page to users of assistive technology, re
 </div>
 
 ![An Event Apart homepage in Chrome DevTools](../aea-grid-inspect.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Native HTML vs. ARIA
+
+Implicit and explicit semantics: built-in vs. bolt-on
+
+<CodeBlock side="left">
+
+```html
+<header aria-label="Global">
+<footer aria-label="Global">
+```
+
+</CodeBlock>
+
+<CodeBlock side="right">
+
+```html
+<div role="banner" aria-label="Global">
+<div role="contentinfo" aria-label="Global">
+```
+
+</CodeBlock>
 
 </Slide>
 
@@ -1413,7 +1480,7 @@ gatsby build
 
 # Gatsby progressive<br />enhancement demo
 
-http://localhost:8000/enhanced/tablist
+http://localhost:8000/enhanced-tablist
 
 </Slide>
 
@@ -1425,7 +1492,7 @@ http://localhost:8000/enhanced/tablist
 
 Play with progressive enhancement
 
-- [components/tab-list.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/tab-list.js)
+- [tab-list.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components/better/tab-list.js)
 
 </Slide>
 
@@ -1436,7 +1503,7 @@ Play with progressive enhancement
 # Exercise answer
 ## Progressive enhancement
 
-- [examples/tablist.js](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/progressive-enhancement)
+- [Working tab-list.js example](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples/progressive-enhancement)
 
 </Slide>
 
