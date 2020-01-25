@@ -16,7 +16,7 @@ const IndexPage = () => (
 
       <h3 id="Testing-Tools">Testing Tools</h3>
       <ul>
-        <li><a href="https://deque.com/axe/">aXe by Deque</a></li>
+        <li><a href="https://deque.com/axe/">axe by Deque</a></li>
         <li><a href="https://www.npmjs.com/package/cypress-axe">Cypress-axe</a></li>
         <li><a href="https://github.com/evcohen/eslint-plugin-jsx-a11y">eslint-plugin-jsx-a11y</a></li>
         <li><a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a></li>

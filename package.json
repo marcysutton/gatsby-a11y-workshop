@@ -1,7 +1,12 @@
 {
   "name": "gatsby-a11y-workshop",
+<<<<<<< HEAD
   "description": "Building Accessible Gatsby Sites",
   "version": "1.0.0",
+=======
+  "description": "Building Accessible Sites with Gatsby",
+  "version": "1.0.1",
+>>>>>>> dd8aa9a... initial Gatsby Days update
   "author": "Marcy Sutton <marcy@gatsbyjs.com>",
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.2.0",

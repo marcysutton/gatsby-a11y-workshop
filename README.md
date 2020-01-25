@@ -2,7 +2,9 @@
 
 Learn the necessary techniques and tools for building inclusive web applications with Gatsby and React.js from Gatsby's Head of Learning Marcy Sutton.
 
-Presenting at [Smashing Conf NYC](https://smashingconf.com/ny-2019/)
+Presented at:
+- [Gatsby Days LA](https://www.gatsbyjs.com/gdla-a11y-workshop/)
+- [Smashing Conf NYC](https://smashingconf.com/ny-2019/)
 
 Some key takeaways:
 
