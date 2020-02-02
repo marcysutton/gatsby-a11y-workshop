@@ -587,38 +587,50 @@ export default () => {
 
 ---
 
+import TacoComponent from '../components/taco-component'
+
 <Slide>
 
-# We still love u, class components
+# Class components
 
 <CodeBlock side="left">
 
 ```jsx
 import React, {Component} from 'react'
 
-class MyComponent extends Component {
-    constructor() {
+class TacoComponent extends Component {
+    constructor(props) {
         super()
+        this.tacoTopping = props.topping
     }
-    // lifecycle methods here
-    render {
+    getTacos() {
+        if (window)
+            window.alert(`TACOS! 🌮${this.tacoTopping}`)
+    }
+    render () {
         return (
-            <div>
-                {/* UI stuff here */}
-            </div>
+            <button onClick={() => { this.getTacos()}}>
+                Get tacos
+            </button>
         )
     }
 }
-export default MyComponent
+export default TacoComponent
 ```
 
 </CodeBlock>
 
+<CodeBlock side="right">
+
+```jsx
+<TacoComponent topping="🌶" />
+```
+
+<TacoComponent topping="🌶" />
+
+</CodeBlock>
+
 </Slide>
-
----
-
-<img src="../chrome-devtools-component-tree.png" alt="Rendered HTML tree in Chrome devTools" style="max-height: 100vh" />
 
 ---
 
