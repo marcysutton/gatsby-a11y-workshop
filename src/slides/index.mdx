@@ -525,6 +525,112 @@ Things to watch out for:
 
 <Slide>
 
+# Components<br />in Gatsby
+
+- [page components](https://www.gatsbyjs.org/docs/building-with-components/#page-components)
+- [non-page components](https://www.gatsbyjs.org/docs/building-with-components/#non-page-components)
+- [layout components](https://www.gatsbyjs.org/docs/layout-components/)
+
+<br />
+<a href="https://www.gatsbyjs.org/docs/building-with-components/">Building with components</a>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Functional components in action
+
+<CodeBlock side="left" title="src/components/my-component.jsx">
+
+```jsx
+import React, {useRef} from 'react'
+
+const MyComponent = (props) => {
+    return (
+        <div>
+            {/* UI stuff here */}
+        </div>
+    )
+}
+
+export default MyComponent
+```
+
+</CodeBlock>
+
+<CodeBlock side="right" marginClass="noRightMargin" title="src/pages/index.jsx">
+
+```jsx
+import React from 'react'
+import { Link } from "gatsby"
+import MyComponent from '../components/my-component'
+export default () => {
+    return (
+        <div>
+            <Link to="/some-page">Some page</Link>
+            <MyComponent />  
+        </div>
+    )
+}
+```
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+import TacoComponent from '../components/taco-component'
+
+<Slide>
+
+# Class components
+
+<CodeBlock side="left">
+
+```jsx
+import React, {Component} from 'react'
+
+class TacoComponent extends Component {
+    constructor(props) {
+        super()
+        this.tacoTopping = props.topping
+    }
+    getTacos() {
+        if (window)
+            window.alert(`TACOS! 🌮${this.tacoTopping}`)
+    }
+    render () {
+        return (
+            <button onClick={() => { this.getTacos()}}>
+                Get tacos
+            </button>
+        )
+    }
+}
+export default TacoComponent
+```
+
+</CodeBlock>
+
+<CodeBlock side="right">
+
+```jsx
+<TacoComponent topping="🌶" />
+```
+
+<TacoComponent topping="🌶" />
+
+</CodeBlock>
+
+</Slide>
+
+---
+
+<Slide>
+
 # Intro to Accessibility<br />in JavaScript Applications
 
 <div style="width: 55%; margin: 1em auto">
