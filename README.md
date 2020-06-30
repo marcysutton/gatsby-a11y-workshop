@@ -1,28 +1,13 @@
-# Building Accessible Sites with Gatsby
+# Automated Accessibility Testing with Gatsby
 
-Learn the necessary techniques and tools for building inclusive web applications with Gatsby and React.js from Gatsby's Head of Learning Marcy Sutton.
+Learn the necessary techniques and tools for testing inclusive web applications with Gatsby and React.js from Gatsby's Lead Developer Relations Engineer Marcy Sutton.
 
 Presented at:
-- [Gatsby Days LA](https://www.gatsbyjs.com/gdla-a11y-workshop/)
-- [Smashing Conf NYC](https://smashingconf.com/ny-2019/)
+- [Smashing Workshop](https://smashingconf.com/online-workshops/workshops/marcy-sutton)
 
-Some key takeaways:
-
-- Understand how to incorporate accessibility into your web development workflow.
-- Debug your sites and applications for accessibility using the latest tools.
-- Apply accessibility to React web applications with Gatsby, while learning how accessibility applies to other stacks.
-- Learn the benefits of manual and automated testing to grow web accessibility superpowers!
-- Integrate focus management into your web applications, gracefully handling keyboard and screen reader interactions.
-- Practice announcing view changes with your code and keeping screen reader users up to date.
-- Achieve wins with semantic markup, unobtrusive animation, and progressive enhancement.
-
-App URL: https://marcysutton.github.io/gatsby-a11y-workshop
-
-Workshop slides: https://marcysutton.github.io/gatsby-a11y-workshop/slides/
+App URL: https://marcysutton.github.io/workshop-a11y-testing
 
 ---
-
-This project was started with [gatsby-starter-mdx-basic](https://github.com/christopherbiscardi/gatsby-starter-mdx-basic) and [@mdx-deck/theme](https://github.com/jxnblk/mdx-deck/tree/master/packages/gatsby-theme).
 
 _Note: This repo requires [Node 12 and npm](https://nodejs.org) to be installed._
 
@@ -32,16 +17,16 @@ _Note: This repo requires [Node 12 and npm](https://nodejs.org) to be installed.
 npm install -g gatsby-cli
 ```
 
-1. Create a new Gatsby site and slide deck using this starter
+1. Create a new Gatsby site using this starter
 
 ```sh
-gatsby new gatsby-a11y-workshop https://github.com/marcysutton/gatsby-a11y-workshop
+gatsby new workshop-a11y-testing https://github.com/marcysutton/workshop-a11y-testing
 ```
 
 3. Go into the directory and start the development server
 
 ```sh
-cd gatsby-a11y-workshop
+cd workshop-a11y-testing
 gatsby develop
 ```
 
@@ -49,15 +34,14 @@ gatsby develop
 
 4. Edit files:
 
-    - Site pages: [`src/pages/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/pages)
-    - Site components: [`src/components/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/components)
-    - Templates: [`src/templates/*`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/templates)
-    - Slide content: [`src/slides/index.mdx`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/src/slides/index.mdx)
+    - Site pages: [`src/pages/*`](https://github.com/marcysutton/workshop-a11y-testing/blob/master/src/pages)
+    - Site components: [`src/components/*`](https://github.com/marcysutton/workshop-a11y-testing/blob/master/src/components)
+    - Templates: [`src/templates/*`](https://github.com/marcysutton/workshop-a11y-testing/blob/master/src/templates)
+    - Integration tests and setup files: [`cypress/](https://github.com/marcysutton/workshop-a11y-testing/blog/master/cypress)
+5. To look at the answers from the exercises, check out the [`/examples`](https://github.com/marcysutton/workshop-a11y-testing/blob/master/examples) directory in the default/main branch
 
-5. To look at the answers from the exercises, check out the [`/examples`](https://github.com/marcysutton/gatsby-a11y-workshop/blob/master/examples) directory in the `master` branch
-
-You can also check out the `solutions` branch to see everything in action: https://github.com/marcysutton/gatsby-a11y-workshop/tree/solutions
+You can also check out the `solutions` branch to see everything in action: https://github.com/marcysutton/workshop-a11y-testing/tree/solutions
 
 ### Prerequisites
-1. Have a text editor installed, i.e. VSCode
+1. Have a text editor installed, i.e. VS Code
 2. Have Node.js 12+ and npm installed
