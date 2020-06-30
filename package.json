@@ -1,6 +1,6 @@
 {
-  "name": "workshop-a11y-testing",
-  "description": "Automated Accessibility Testing with Gatsby",
+  "name": "gatsby-a11y-workshop",
+  "description": "Building Accessible Sites with Gatsby",
   "version": "1.0.1",
   "author": "Marcy Sutton <marcy@gatsbyjs.com>",
   "dependencies": {
@@ -22,6 +22,7 @@
     "gatsby-plugin-sharp": "^2.2.7",
     "gatsby-remark-prismjs": "^3.3.3",
     "gatsby-source-filesystem": "^2.1.5",
+    "gatsby-theme-mdx-deck": "^3.0.8",
     "gatsby-transformer-sharp": "^2.2.3",
     "match-sorter": "^4.0.1",
     "node-sass": "^4.12.0",
@@ -69,6 +70,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/marcysutton/workshop-a11y-testing"
+    "url": "https://github.com/marcysutton/gatsby-a11y-workshop"
   }
 }

@@ -2,13 +2,22 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `Automated Accessibility Testing with Gatsby`,
+    title: `Building Accessible Sites with Gatsby`,
     description:
-      `Learn the necessary techniques and tools for testing inclusive web applications with Gatsby and React.js.`,
+      `Learn the necessary techniques and tools for building inclusive web applications with Gatsby.`,
     author: `@marcysutton`,
   },
-  pathPrefix: "/workshop-a11y-testing",
+  pathPrefix: "/gatsby-a11y-workshop",
   plugins: [
+    {
+      resolve: `gatsby-theme-mdx-deck`,
+      options: {
+        mdx: true,
+        // source directory for decks
+        contentPath: `src/slides`,
+        basePath: '/slides',
+      },
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {

@@ -10,13 +10,7 @@ const TabList = ({ items = [] }) => {
     setClient(true)
   }, [])
   return (
-    <ul {...isClient && { 'role': 'tablist' }}>
-      {items.map(item => {
-        return <li key={item.id} role={isClient ? 'tab' : 'listitem'}>
-          {item.label}
-        </li>
-      })}
-    </ul>
+    <></>
   )
 }
 

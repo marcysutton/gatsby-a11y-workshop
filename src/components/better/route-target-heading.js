@@ -21,17 +21,10 @@ const styles = css`
         opacity: 1;
     }
 `
-const RouteHeading = ({level = 2, targetID, children}) => {
-    const Heading = `h${level}`
+const RouteHeading = ({children}) => {
     return (
-        <Heading css={styles} className="routeSkipHeading">
-            <a href={ `#${targetID}` }
-                id="skip-main"
-                className="routeSkipLink"
-                aria-label={`skip to ${targetID}`}>
-            </a>
-            {children}
-        </Heading>
+        <>
+        </>
     )
 }
 export default RouteHeading
